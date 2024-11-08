@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <style>
+        /* Reset margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            overflow-x: hidden;
+        }
+
+        nav {
+            width: 100%;
+            background-color: orange;
+            padding: 1em;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            z-index: 0;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .content {
+            max-width: 100%;
+            padding: 1em;
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top:50px; /* Space below fixed nav */
+        }
+
+        .page {
+            display: none;
+            padding: 0;
+        }
+
+        #home { display: block; } /* Default page */
+
+        /* Homepage styling */
+        .hero {
+            background-image: url('https://i.pinimg.com/originals/b9/b8/1a/b9b81ab0e549a0ef6bbd9616e32031d5.gif');
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+            background-position: center;
+            color: #ffffff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+        }
+
+        /* Flight Options styling */
+        .flight-option {
+            padding: 1em;
+            margin: 1em 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        .flight-option h3 {
+            margin: 0;
+        }
+
+        .price-tag {
+            background-color: #005f99;
+            color: #ffffff;
+            padding: 0.5em 1em;
+            border-radius: 4px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Form styling */
+        label, input, select {
+            display: block;
+            margin-bottom: 0.5em;
+            width: 100%;
+        }
+
+        input, select {
+            padding: 0.5em;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #005f99;
+            color: #ffffff;
+            border: none;
+            padding: 0.75em 1.5em;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004a73;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('book')">Book a Flight</a>
+        <a onclick="showPage('options')">Flight Options</a>
+        <a onclick="showPage('contact')">Contact Us</a>
+        
+    </nav>
+
+    <!-- Page content -->
+    <div class="content">
+        <!-- Home Page -->
+        <div id="home" class="page">
+            <div class="hero">
+                <h1>Welcome to SkyHigh Airlines</h1>
+                <p>Your journey to the skies starts here! Book flights easily and conveniently.</p>
+            </div>
+        </div>
+
+        <!-- Book a Flight Page -->
+        <div id="book" class="page">
+            <h2>Book a Flight</h2>
+            <form>
+                <label for="departure">Departure City:</label>
+                <input type="text" id="departure" placeholder="Enter your departure city">
+
+                <label for="destination">Destination City:</label>
+                <input type="text" id="destination" placeholder="Enter your destination city">
+
+                <label for="date">Date of Flight:</label>
+                <input type="date" id="date">
+
+                <label for="passengers">Number of Passengers:</label>
+                <select id="passengers">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+
+        <!-- Flight Options Page -->
+        <div id="options" class="page">
+            <h2>Flight Options</h2>
+            <div class="flight-option">
+                <div>
+                    <h3>New York to Los Angeles</h3>
+                    <p>Departure: 10:00 AM</p>
+                    <p>Arrival: 1:00 PM</p>
+                </div>
+                <div class="price-tag">$350</div>
+            </div>
+            <div class="flight-option">
+                <div>
+                    <h3>Chicago to Miami</h3>
+                    <p>Departure: 12:00 PM</p>
+                    <p>Arrival: 3:30 PM</p>
+                </div>
+                <div class="price-tag">$290</div>
+            </div>
+            <div class="flight-option">
+                <div>
+                    <h3>San Francisco to Seattle</h3>
+                    <p>Departure: 9:00 AM</p>
+                    <p>Arrival: 10:30 AM</p>
+                </div>
+                <div class="price-tag">$150</div>
+            </div>
+            <div class="flight-option">
+                <div>
+                    <h3>Bangalore to Los Angeles</h3>
+                    <p>Departure: 10:00 AM</p>
+                    <p>Arrival: 1:00 PM</p>
+                </div>
+                <div class="price-tag">$350</div>
+            </div>
+        </div>
+
+        <!-- Contact Us Page -->
+        <div id="contact" class="page">
+            <h2>Contact Us</h2>
+            <p>For inquiries or assistance, please reach out:</p>
+            <p>Email: manojkumarb9606@gmail.com</p>
+            <p>Phone: 960656090</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to switch pages
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.style.display = 'none');
+            document.getElementById(pageId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
